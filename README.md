@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run gickup
-      uses: socheatsok78/gickup-action@v1
+      uses: socheatsok78/gickup-action@main
 ```
 
 > [!NOTE]
