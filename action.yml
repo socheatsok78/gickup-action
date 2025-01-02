@@ -17,7 +17,7 @@ inputs:
     description: 'Run gickup in debug mode'
     required: false
     default: 'false'
-  token:
+  github-token:
     description: 'The GitHub token or personal access token'
     required: false
     default: '${{ github.token }}'
