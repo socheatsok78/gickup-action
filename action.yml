@@ -1,0 +1,28 @@
+# action.yml
+name: 'Gickup Action'
+description: 'A GitHub Action for backing up any git repositories using gickup'
+branding:
+  icon: 'award'
+  color: 'green'
+
+inputs:
+  config-file:
+    description: 'The gickup configuration file'
+    default: '.github/gickup.yml'
+  dryrun:
+    description: 'Run gickup in dryrun mode'
+    required: false
+    default: 'false'
+  debug:
+    description: 'Run gickup in debug mode'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/socheatsok78/gickup-action:main'
+  env:
+    INPUT_DEBUG: ${{ inputs.debug }}
+    INPUT_DRYRUN: ${{ inputs.dryrun }}
+  args:
+    - ${{ inputs.config-file }}

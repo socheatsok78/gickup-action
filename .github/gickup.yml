@@ -1,0 +1,7 @@
+source:
+  github:
+    - user: actions
+destination:
+  local:
+    - path: /tmp
+      structured: true
