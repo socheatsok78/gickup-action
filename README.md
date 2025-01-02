@@ -17,7 +17,11 @@ Please refer to the [gickup documentation](https://cooperspencer.github.io/gicku
 Create a `.github/workflows/backup.yml` file in your repository with the following content:
 ```yml
 name: backup
-on: push
+
+on:
+  push:
+  workflow_dispatch:
+
 jobs:
   backup:
     runs-on: ubuntu-latest
