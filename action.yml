@@ -17,6 +17,10 @@ inputs:
     description: 'Run gickup in debug mode'
     required: false
     default: 'false'
+  token:
+    description: 'The GitHub token or personal access token'
+    required: false
+    default: '${{ github.token }}'
 
 runs:
   using: 'docker'
@@ -24,5 +28,6 @@ runs:
   env:
     INPUT_DEBUG: ${{ inputs.debug }}
     INPUT_DRYRUN: ${{ inputs.dryrun }}
+    GITHUB_TOKEN: ${{ inputs.token }}
   args:
     - ${{ inputs.config }}
