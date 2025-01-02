@@ -2,6 +2,8 @@ source:
   github:
     - user: actions
 destination:
+  # Local backup will not work in GitHub Actions,
+  # but it's here for demonstration purposes
   local:
     - path: /tmp
       structured: true

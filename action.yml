@@ -6,7 +6,7 @@ branding:
   color: 'green'
 
 inputs:
-  config-file:
+  config:
     description: 'The gickup configuration file'
     default: '.github/gickup.yml'
   dryrun:
@@ -25,4 +25,4 @@ runs:
     INPUT_DEBUG: ${{ inputs.debug }}
     INPUT_DRYRUN: ${{ inputs.dryrun }}
   args:
-    - ${{ inputs.config-file }}
+    - ${{ inputs.config }}
