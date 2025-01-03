@@ -28,6 +28,6 @@ runs:
   env:
     INPUT_DEBUG: ${{ inputs.debug }}
     INPUT_DRYRUN: ${{ inputs.dryrun }}
-    GITHUB_TOKEN: ${{ inputs.token }}
+    GH_TOKEN: ${{ inputs.token }}
   args:
     - ${{ inputs.config }}
