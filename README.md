@@ -76,7 +76,7 @@ jobs:
         secrets: ${{ toJson(secrets) }}
 ```
 
-The `env`, `vars`, and `secrets` inputs are optional. If you do not provide them, the action will not pass any environment variables, variables, or secrets to your gickup configuration.
+The `env`, `vars`, and `secrets` inputs are optional. If you do not provide them, the action will not pass any environment variables, variables, or secrets to your gickup configuration. Thanks to [gomplate](https://github.com/hairyhenderson/gomplate) for providing the templating capabilities to access these values.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
