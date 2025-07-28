@@ -3,6 +3,7 @@
 source:
   github:
     - user: actions
+      token: ${{ .secret.github-token }}
 destination:
   # Local backup will not work in GitHub Actions,
   # but it's here for demonstration purposes
