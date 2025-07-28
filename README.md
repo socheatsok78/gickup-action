@@ -1,4 +1,4 @@
-# gickup-action
+## About
 A GitHub Action for backing up any git repositories using gickup
 
 ## Usage
@@ -33,11 +33,11 @@ jobs:
 ```
 
 > [!NOTE]
-> By default, the action will look for a `.github/gickup.yml` file in your repository. If you have a different configuration file, you can specify it using the `config` input. See the [Inputs](#inputs) section for more information.
+> By default, the action will look for a `.gickup/gickup.yml` file in your repository. If you have a different configuration file, you can specify it using the `config` input. See the [Inputs](#inputs) section for more information.
 
 ## Inputs
 
-- `config`: The path to the gickup configuration file. Default: `.github/gickup.yml`
+- `config`: The path to the gickup configuration file. Default: `.gickup/gickup.yml`
 - `dryrun`: Whether to run gickup in dry-run mode. Default: `false`
 - `debug`: Whether to run gickup in debug mode. Default: `false`
 
