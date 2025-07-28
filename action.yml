@@ -21,6 +21,7 @@ inputs:
     description: 'The GitHub token or personal access token'
     required: false
     default: '${{ github.token }}'
+  # Gomplate contexts
   github:
     description: 'The GitHub context to pass to gickup'
     required: false
