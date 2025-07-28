@@ -29,7 +29,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run gickup
-      uses: socheatsok78/gickup-action@main
+      uses: socheatsok78/gickup-action@v2
 ```
 
 > [!NOTE]
@@ -67,7 +67,7 @@ jobs:
     steps:
     # ...
     - name: Run gickup
-      uses: socheatsok78/gickup-action@main
+      uses: socheatsok78/gickup-action@v2
       with:
         # Add the following inputs to pass env, vars, and secrets
         # to your gickup configuration
