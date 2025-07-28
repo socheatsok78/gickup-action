@@ -1,5 +1,5 @@
 ## About
-A GitHub Action for backing up any git repositories using gickup
+A GitHub Action for backing up any git repositories using [gickup](https://github.com/cooperspencer/gickup).
 
 ## Usage
 Create a `.gickup/gickup.yml` file in your repository with your preferred configuration:
@@ -75,3 +75,8 @@ jobs:
         vars: ${{ toJson(vars) }}
         secrets: ${{ toJson(secrets) }}
 ```
+
+The `env`, `vars`, and `secrets` inputs are optional. If you do not provide them, the action will not pass any environment variables, variables, or secrets to your gickup configuration.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
