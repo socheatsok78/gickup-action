@@ -1,10 +1,9 @@
 FROM buddyspencer/gickup:latest AS gickup
+FROM hairyhenderson/gomplate:latest AS gomplate
 
 FROM alpine:latest
-COPY --link --from=gickup /gickup/gickup /usr/bin/gickup
-
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
-
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
+RUN apk add --no-cache ca-certificates bash
+COPY --link --from=gickup /gickup/gickup /usr/local/bin/gickup
+COPY --link --from=gomplate /gomplate /usr/local/bin/gomplate
+ADD rootfs /
 ENTRYPOINT ["/entrypoint.sh"]

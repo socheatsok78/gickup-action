@@ -25,9 +25,3 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/socheatsok78/gickup-action:main'
-  env:
-    INPUT_DEBUG: ${{ inputs.debug }}
-    INPUT_DRYRUN: ${{ inputs.dryrun }}
-    GH_TOKEN: ${{ inputs.token }}
-  args:
-    - ${{ inputs.config }}
