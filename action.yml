@@ -28,15 +28,15 @@ inputs:
   env:
     description: 'The Environment variables to pass to gickup'
     required: false
-    default: '${{ toJson(env) }}'
+    default: '{}'
   vars:
     description: 'The Variables to pass to gickup'
     required: false
-    default: '${{ toJson(vars) }}'
+    default: '{}'
   secrets:
     description: 'The Secrets to pass to gickup'
     required: false
-    default: '${{ toJson(secrets) }}'
+    default: '{}'
 
 runs:
   using: 'docker'
