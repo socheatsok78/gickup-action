@@ -14,6 +14,7 @@ fi
 
 # Store environment variables, vars, and secrets in temporary files
 mkdir -p "${GICKUP_ACTION_TEMP}"
+echo "${INPUT_GITHUB}" > "${GICKUP_ACTION_TEMP}/github.json"
 echo "${INPUT_ENV}" > "${GICKUP_ACTION_TEMP}/env.json"
 echo "${INPUT_VARS}" > "${GICKUP_ACTION_TEMP}/vars.json"
 echo "${INPUT_SECRETS}" > "${GICKUP_ACTION_TEMP}/secrets.json"
@@ -27,6 +28,8 @@ rightDelim: '}}'
 inputDir: $(dirname "/github/workspace/${INPUT_CONFIG}")
 outputDir: $(dirname "${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}")
 context:
+  github:
+    url: file://${GICKUP_ACTION_TEMP}/github.json
   env:
     url: file://${GICKUP_ACTION_TEMP}/env.json
   vars:

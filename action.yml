@@ -25,6 +25,10 @@ inputs:
     description: 'The Environment variables to pass to gickup'
     required: false
     default: '{}'
+  github:
+    description: 'The GitHub context to pass to gickup'
+    required: false
+    default: '${{ toJson(github) }}'
   vars:
     description: 'The Variables to pass to gickup'
     required: false
