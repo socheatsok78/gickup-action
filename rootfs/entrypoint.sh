@@ -20,6 +20,7 @@ echo "${INPUT_VARS}" > "${GICKUP_ACTION_TEMP}/vars.json"
 echo "${INPUT_SECRETS}" > "${GICKUP_ACTION_TEMP}/secrets.json"
 
 # Generate gomplate configuration
+echo "::group::Prepare gickup configuration"
 mkdir -p /etc/gomplate
 mkdir -p $(dirname "/github/workspace/${INPUT_CONFIG}")
 cat <<EOT > "${GOMPLATE_CONFIG}"
@@ -40,6 +41,7 @@ EOT
 
 # Generate gickup configuration using gomplate
 gomplate --verbose
+echo "::endgroup::"
 
 if [[ "${INPUT_DEBUG:-false}" == "true" ]]; then
     set -- "$@" --debug
@@ -60,7 +62,3 @@ fi
 
 # Run gickup with the provided arguments
 gickup "$@"
-
-echo "::group::Debug Information"
-env
-echo "::endgroup::"
