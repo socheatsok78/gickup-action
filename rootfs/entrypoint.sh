@@ -12,17 +12,19 @@ if [ ! -f "/github/workspace/${INPUT_CONFIG}" ]; then
     exit 1
 fi
 
+echo "::group::Prepare environment..."
+(set -x; mkdir -p /etc/gomplate)
+(set -x; mkdir -p "${GICKUP_ACTION_TEMP}")
+echo "::endgroup::"
+
 # Store environment variables, vars, and secrets in temporary files
-mkdir -p "${GICKUP_ACTION_TEMP}"
 echo "${INPUT_GITHUB}" > "${GICKUP_ACTION_TEMP}/github.json"
 echo "${INPUT_ENV}" > "${GICKUP_ACTION_TEMP}/env.json"
 echo "${INPUT_VARS}" > "${GICKUP_ACTION_TEMP}/vars.json"
 echo "${INPUT_SECRETS}" > "${GICKUP_ACTION_TEMP}/secrets.json"
 
 # Generate gomplate configuration
-echo "::group::Prepare gickup configuration"
-mkdir -p /etc/gomplate
-mkdir -p $(dirname "/github/workspace/${INPUT_CONFIG}")
+echo "::group::Prepare gickup configuration..."
 cat <<EOT > "${GOMPLATE_CONFIG}"
 leftDelim: '\${{'
 rightDelim: '}}'
