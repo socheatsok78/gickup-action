@@ -53,4 +53,4 @@ jobs:
     - name: Dispatch test workflow
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: gh workflow run test.yml
+      run: gh workflow run --ref ${{ github.ref_name }} test.yml
