@@ -17,14 +17,14 @@ Please refer to the [gickup documentation](https://cooperspencer.github.io/gicku
 
 Create a `.github/workflows/gickup.yml` file in your repository with the following content:
 ```yml
-name: backup
+name: gickup
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  backup:
+  gickup:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
