@@ -14,3 +14,6 @@ jobs:
       with:
         dryrun: 'true'
         debug: 'true'
+        env: ${{ toJson(env) }}
+        vars: ${{ toJson(vars) }}
+        secrets: ${{ toJson(secrets) }}
