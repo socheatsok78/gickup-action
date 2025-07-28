@@ -52,7 +52,7 @@ You can access GitHub workflow `env`, `vars`, and `secrets` in your gickup confi
 source:
   github:
     - user: actions
-      token: ${{ .secret.github_token }}
+      token: ${{ .secrets.github_token }}
 destination:
   # Your destination repository configuration goes here
 ```
