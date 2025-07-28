@@ -13,6 +13,9 @@ destination:
   # Your source repository configuration goes here
 ```
 
+> [!NOTE]
+> You can use `.env`, `.vars` & `.secrets` in your configuration file to access environment variables, repository secrets, and GitHub Actions variables. This allows you to keep sensitive information out of your configuration file.
+
 Please refer to the [gickup documentation](https://cooperspencer.github.io/gickup-documentation/category/configuration) for more information on how to configure your backup.
 
 Create a `.github/workflows/backup.yml` file in your repository with the following content:
