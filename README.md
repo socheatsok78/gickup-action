@@ -5,6 +5,7 @@ A GitHub Action for backing up any git repositories using gickup
 Create a `.github/gickup.yml` file in your repository with your preferred configuration:
 
 ```yml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cooperspencer/gickup/refs/heads/main/gickup_spec.json
 # Example gickup configuration
 source:
   # Your source repository configuration goes here
