@@ -21,6 +21,18 @@ inputs:
     description: 'The GitHub token or personal access token'
     required: false
     default: '${{ github.token }}'
+  env:
+    description: 'The Environment variables to pass to gickup'
+    required: false
+    default: '{}'
+  vars:
+    description: 'The Variables to pass to gickup'
+    required: false
+    default: '{}'
+  secrets:
+    description: 'The Secrets to pass to gickup'
+    required: false
+    default: '{}'
 
 runs:
   using: 'docker'

@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eou pipefail
 
+GICKUP_ACTION_WORKSPACE="/github/workspace/.gickup-action"
+GICKUP_ACTION_TEMP="/tmp/.gickup-action"
+
 export GOMPLATE_CONFIG="${GOMPLATE_CONFIG:-/etc/gomplate/gomplate.yaml}"
 export GOMPLATE_LOG_FORMAT=${GOMPLATE_LOG_FORMAT:-logfmt}
 
@@ -9,6 +12,12 @@ if [ ! -f "/github/workspace/${INPUT_CONFIG}" ]; then
     exit 1
 fi
 
+# Store environment variables, vars, and secrets in temporary files
+mkdir -p "${GICKUP_ACTION_TEMP}"
+echo "${INPUT_ENV}" > "${GICKUP_ACTION_TEMP}/env.json"
+echo "${INPUT_VARS}" > "${GICKUP_ACTION_TEMP}/vars.json"
+echo "${INPUT_SECRETS}" > "${GICKUP_ACTION_TEMP}/secrets.json"
+
 # Generate gomplate configuration
 mkdir -p /etc/gomplate
 mkdir -p $(dirname "/github/workspace/${INPUT_CONFIG}")
@@ -16,14 +25,14 @@ cat <<EOT > "${GOMPLATE_CONFIG}"
 leftDelim: '\${{'
 rightDelim: '}}'
 inputDir: $(dirname "/github/workspace/${INPUT_CONFIG}")
-outputDir: $(dirname "/github/workspace/.gickup-action/${INPUT_CONFIG}")
+outputDir: $(dirname "${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}")
 context:
   env:
-    url: file://${RUNNER_TEMP}/env.json
+    url: file://${GICKUP_ACTION_TEMP}/env.json
   vars:
-    url: file://${RUNNER_TEMP}/vars.json
+    url: file://${GICKUP_ACTION_TEMP}/vars.json
   secrets:
-    url: file://${RUNNER_TEMP}/secrets.json
+    url: file://${GICKUP_ACTION_TEMP}/secrets.json
 EOT
 
 # Generate gickup configuration using gomplate
@@ -38,12 +47,12 @@ fi
 
 echo "Running gickup with arguments: $@"
 
-if [ ! -f "/github/workspace/.gickup-action/${INPUT_CONFIG}" ]; then
+if [ ! -f "${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}" ]; then
     echo "Error: Configuration file '${INPUT_CONFIG}' not found in '/github/workspace'"
     exit 1
 else
-    echo "Using configuration file: /github/workspace/.gickup-action/${INPUT_CONFIG}"
-    set -- "$@" "/github/workspace/.gickup-action/${INPUT_CONFIG}"
+    echo "Using configuration file: ${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}"
+    set -- "$@" "${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}"
 fi
 
 # Run gickup with the provided arguments
