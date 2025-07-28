@@ -40,4 +40,4 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/socheatsok78/gickup-action:next'
+  image: 'docker://ghcr.io/socheatsok78/gickup-action:v2'
