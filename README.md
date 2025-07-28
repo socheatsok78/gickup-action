@@ -2,7 +2,9 @@
 A GitHub Action for backing up any git repositories using [gickup](https://github.com/cooperspencer/gickup).
 
 ## Usage
-Create a `.gickup/gickup.yml` file in your repository with your preferred configuration:
+Create a new repository or use an existing one where you want to set up the backup action (e.g., `socheatsok78/.gickup`). This repository will hold your gickup configuration and the action workflow.
+
+First, create a `.gickup/gickup.yml` file in that repository with your preferred configuration:
 
 ```yml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/cooperspencer/gickup/refs/heads/main/gickup_spec.json
@@ -15,7 +17,7 @@ destination:
 
 Please refer to the [gickup documentation](https://cooperspencer.github.io/gickup-documentation/category/configuration) for more information on how to configure your backup.
 
-Create a `.github/workflows/gickup.yml` file in your repository with the following content:
+Then, create a `.github/workflows/gickup.yml` file in your repository with the following content:
 ```yml
 name: gickup
 
