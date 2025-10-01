@@ -9,8 +9,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Run gickup
-      uses: ./
+    - name: Adjust run image for testing
+      run: |
+        mkdir -p integration
+        sed '$d' action.yml > integration/action.yml
+        echo "  image: 'docker://ghcr.io/socheatsok78/gickup-action:${{ github.ref_name }}'" >> integration/action.yml
+
+    - name: Run gickup integration tests
+      uses: ./integration
       with:
         dryrun: 'true'
         debug: 'true'
