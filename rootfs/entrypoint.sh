@@ -68,7 +68,7 @@ fi
 echo "Running gickup with arguments: $*"
 
 if [ ! -f "${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}" ]; then
-    echo "Error: Configuration file '${INPUT_CONFIG}' not found in '/github/workspace'"
+    echo "Error: Configuration file '${INPUT_CONFIG}' not found in '${GICKUP_ACTION_WORKSPACE}'"
     exit 1
 else
     echo "Using configuration file: ${GICKUP_ACTION_WORKSPACE}/${INPUT_CONFIG}"
