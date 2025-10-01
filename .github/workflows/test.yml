@@ -12,14 +12,13 @@ jobs:
     - name: Prepare integration test action
       run: |
         ref_name=${GITHUB_REF_NAME}
-        if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
-          if [[ "$ref_name" == v* ]]; then
-            ref_name=${ref_name:1}
-          fi
+        if [[ "$GITHUB_REF_TYPE" == "tag" ]] && [[ "$ref_name" == v* ]]; then
+          ref_name=${ref_name:1}
         fi
         mkdir -p integration
         sed '$d' action.yml > integration/action.yml
         echo "  image: 'docker://ghcr.io/socheatsok78/gickup-action:${ref_name}'" >> integration/action.yml
+        echo "Using: ghcr.io/socheatsok78/gickup-action:${ref_name}"
 
     - name: Run gickup integration tests
       uses: ./integration
