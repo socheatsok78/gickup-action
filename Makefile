@@ -3,10 +3,9 @@ build:
 	docker buildx bake --load dev
 run: build
 	docker run --rm -it \
-		-e INPUT_DRYRUN=true \
-		-e INPUT_CONFIG=.github/gickup.yml \
-		-e RUNNER_WORKSPACE=/mnt/fake/workspace \
-		-e RUNNER_TEMP=/mnt/fake/tmp \
+		-v "$(PWD)/fake/github:/github" \
+		-v "$(PWD)/fake/tmp:/tmp" \
+		--workdir /github/workspace \
 		-e GOMPLATE_LOG_FORMAT=console \
-		-v "$(PWD)/fake:/mnt/fake" \
+		-e INPUT_DRYRUN=true \
 		docker.io/library/gickup-action:dev

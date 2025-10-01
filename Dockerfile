@@ -12,4 +12,5 @@ ADD rootfs /
 
 FROM scratch
 COPY --from=base --link / /
+VOLUME [ "/tmp" ]
 ENTRYPOINT ["/entrypoint.sh"]

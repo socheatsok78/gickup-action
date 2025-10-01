@@ -17,11 +17,10 @@ inputs:
     description: 'Run gickup in debug mode'
     required: false
     default: 'false'
-  github-token:
-    description: 'The GitHub token or personal access token'
-    required: false
-    default: '${{ github.token }}'
-  # Gomplate contexts
+  # Pass GitHub context, environment variables, variables, and secrets as JSON strings
+  # This uses gomplate to provide these contexts to the configuration file
+  # preventing the need to set secrets and variables in the gickup configuration file
+  # which may lead to accidental exposure of sensitive information
   github:
     description: 'The GitHub context to pass to gickup'
     required: false
