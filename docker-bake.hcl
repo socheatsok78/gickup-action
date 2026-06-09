@@ -1,4 +1,4 @@
-variable "GICKUP_VERSION" { default = "0.10.39" }
+variable "GICKUP_VERSION" { default = "0.10.44" }
 variable "GOMPLATE_VERSION" { default = "4.3.3" }
 
 target "docker-metadata-action" {}
